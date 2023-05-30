@@ -1,0 +1,15 @@
+<div *ngIf="isMealPlanCalculated" class="container">
+    <div class="list">
+      <div *ngFor="let menu of mealPlan.mealArray" class="list-item">
+        <div class="panel">
+          <h3 class="list-header">{{menu.meal}}</h3>
+          <div *ngFor="let content of menu.contents" class="list-content">
+            <p>{{content}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  

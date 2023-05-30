@@ -1,0 +1,123 @@
+<div *ngIf="!showLoader && !isMealPlanCalculated" class="container">
+  <h1>Personal Information</h1>
+  <form [formGroup]="demoCalculationForm">
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select formControlName="gender" id="gender" name="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <mat-error *ngIf="demoCalculationForm.get('gender')?.invalid && demoCalculationForm.get('gender')?.touched">
+        Gender is required.
+      </mat-error>
+    </div>
+
+    <div class="form-group">
+      <label for="age">Age</label>
+      <input formControlName="age" type="number" id="age" name="age" step="1">
+      <mat-error *ngIf="demoCalculationForm.get('age')?.invalid && demoCalculationForm.get('age')?.touched">
+        Valid age is required
+      </mat-error>
+    </div>
+
+    <div class="form-group">
+      <label for="unit">Unit Measure for Weight</label>
+      <select formControlName="weightUnit" id="unit" name="unit">
+        <option value="kilograms">Kilograms</option>
+        <option value="pounds">Pounds</option>
+      </select>
+      <mat-error *ngIf="demoCalculationForm.get('weightUnit')?.invalid && demoCalculationForm.get('weightUnit')?.touched">
+        Weight unit is required.
+      </mat-error>
+    </div>
+
+    <div class="form-group">
+      <label for="weight">Weight</label>
+      <input formControlName="weight" type="number" id="weight" name="weight" step="0.01">
+      <mat-error *ngIf="demoCalculationForm.get('weight')?.invalid && demoCalculationForm.get('weight')?.touched">
+        Weight is required
+      </mat-error>
+    </div>
+
+    <div class="form-group">
+      <label for="unit-height">Unit Measure for Height</label>
+      <select formControlName="heightUnit" id="unit-height" name="unit-height" (change)='onSelect()'>
+        <option value="CENTIMETERS">Centimeters</option>
+        <option value="FEET">Feet</option>
+      </select>
+      <mat-error *ngIf="demoCalculationForm.get('heightUnit')?.invalid && demoCalculationForm.get('heightUnit')?.touched">
+        Height unit is required.
+      </mat-error>
+    </div>
+    
+    <div class="form-group" *ngIf="!heightUnit">
+      <label for="height">Height</label>
+      <input formControlName="heightInCm" type="number" id="height" name="height" step="0.01">
+    </div>
+
+    <div class="form-group" *ngIf="HeightUnit.CENTIMETERS === heightUnit">
+      <label for="height">Height (cm)</label>
+      <input formControlName="heightInCm" type="number" id="height" name="height" step="0.01">
+      <mat-error *ngIf="demoCalculationForm.get('heightInCm')?.invalid && 
+                        demoCalculationForm.get('heightInCm')?.touched &&
+                        HeightUnit.CENTIMETERS === heightUnit">
+        Height is required
+      </mat-error>
+    </div>
+    
+    <div class="form-group" *ngIf="HeightUnit.FEET === heightUnit">
+      <label for="height-feet">Height (feet)</label>
+      <input formControlName="heightInFt" type="number" id="height-feet" name="height-feet" step="0.01">
+      <mat-error *ngIf="demoCalculationForm.get('heightInFt')?.invalid && 
+                        demoCalculationForm.get('heightInFt')?.touched &&  
+                        HeightUnit.FEET === heightUnit">
+        Height is required
+      </mat-error>
+      <label for="height-inches">Height (inches)</label>
+      <input formControlName="heightInIn" type="number" id="height-inches" name="height-inches" step="0.01">
+      <mat-error *ngIf="demoCalculationForm.get('heightInIn')?.invalid && demoCalculationForm.get('heightInIn')?.touched">
+        Height is required
+      </mat-error>
+    </div>
+    
+
+    <div class="form-group">
+      <label for="meals">Number of Meals</label>
+      <select formControlName="noOfMeals" id="meals" name="meals">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <mat-error *ngIf="demoCalculationForm.get('noOfMeals')?.invalid && demoCalculationForm.get('noOfMeals')?.touched">
+        Number of meals is required.
+      </mat-error>
+    </div>
+
+    <div class="form-group">
+      <label for="snacks">Number of Snacks</label>
+      <select formControlName="noOfSnacks" id="snacks" name="snacks">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+      <mat-error *ngIf="demoCalculationForm.get('noOfSnacks')?.invalid && demoCalculationForm.get('noOfSnacks')?.touched">
+        Number of snacks is required.
+      </mat-error>
+    </div>
+
+    <div class="form-group">
+      <label for="objective">Objective</label>
+      <textarea formControlName="objective" placeholder="Define your objective eg: lose weight and build muscle" id="objective" name="objective"></textarea>
+      <mat-error *ngIf="demoCalculationForm.get('objective')?.invalid && demoCalculationForm.get('objective')?.touched">
+        Objective is required.
+      </mat-error>
+    </div>
+    
+    <button [disabled]="demoCalculationForm.invalid" (click)="onSubmit()" type="submit">Submit</button>
+  </form>
+</div>
+
+<app-spinner [showLoader]="showLoader"></app-spinner>
+
+<app-meal-list [isMealPlanCalculated]="isMealPlanCalculated" [mealPlan]="mealPlan"></app-meal-list>
+

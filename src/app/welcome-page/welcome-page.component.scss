@@ -1,0 +1,117 @@
+/* Reset some default styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Global styles */
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+  }
+  
+  /* Header styles */
+  header {
+    background-color: #333;
+    padding: 10px;
+  }
+  
+  nav ul {
+    list-style: none;
+    text-align: center;
+  }
+  
+  nav ul li {
+    display: inline-block;
+  }
+  
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+  }
+  
+  /* Hero section styles */
+  .hero {
+    background-image: url('../../assets/caterai.png');
+    background-size: cover;
+    background-position: center;
+    height: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hero-content {
+    text-align: center;
+    color: #fff;
+  }
+  
+  .hero-content h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  .hero-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .btn {
+    display: inline-block;
+    background-color: #fff;
+    color: #333;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+    /* Features section styles */
+    .features {
+    padding: 50px;
+    text-align: center;
+  }
+  
+  .features h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .feature {
+    display: inline-block;
+    width: 30%;
+    margin-bottom: 30px;
+  }
+  
+  .feature i {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .feature h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .feature p {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  /* Footer styles */
+  footer {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+  }
+  
+  footer p {
+    font-size: 14px;
+  }
+  
+  /* Font Awesome icons (if using) */
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css');
+  
